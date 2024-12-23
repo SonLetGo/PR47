@@ -45,7 +45,9 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun CustomTooltipExample() {
-    var showTooltip by remember { mutableStateOf(false) }
+    var showTooltipF by remember { mutableStateOf(false) }
+    var showTooltipS by remember { mutableStateOf(false) }
+    var showTooltipL by remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -53,12 +55,12 @@ fun CustomTooltipExample() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ){
-    Box(modifier = Modifier.fillMaxWidth().clickable { showTooltip = !showTooltip }) {
+    Box(modifier = Modifier.fillMaxWidth().clickable { showTooltipF = !showTooltipF }) {
         Text("Нажми на меня", modifier = Modifier.padding(16.dp))
 
         Spacer(modifier = Modifier.height(26.dp))
 
-        if (showTooltip) {
+        if (showTooltipF) {
             Box(
                 modifier = Modifier
                     .background(Color.Gray)
@@ -69,5 +71,41 @@ fun CustomTooltipExample() {
             }
         }
     }
+        Spacer(modifier = Modifier.height(26.dp))
+
+        Box(modifier = Modifier.fillMaxWidth().clickable { showTooltipS = !showTooltipS }) {
+            Text("Нажми на меня", modifier = Modifier.padding(16.dp))
+
+            Spacer(modifier = Modifier.height(26.dp))
+
+            if (showTooltipS) {
+                Box(
+                    modifier = Modifier
+                        .background(Color.Red)
+                        .padding(26.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("Вы нажали на меня!", color = Color.White)
+                }
+            }
+        }
+        Spacer(modifier = Modifier.height(26.dp))
+
+        Box(modifier = Modifier.fillMaxWidth().clickable { showTooltipL = !showTooltipL }) {
+            Text("Не нажимай на меня", modifier = Modifier.padding(16.dp))
+
+            Spacer(modifier = Modifier.height(26.dp))
+
+            if (showTooltipL) {
+                Box(
+                    modifier = Modifier
+                        .background(Color.Blue)
+                        .padding(26.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("Я же сказал не нажимать!", color = Color.White)
+                }
+            }
+        }
 }
 }
